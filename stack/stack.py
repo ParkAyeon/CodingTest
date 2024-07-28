@@ -1,4 +1,4 @@
-#백준 28278번 (스택2)
+#백준 10828번 (스택1)
 import sys
 
 stack = [] #stack 초기화
@@ -7,24 +7,26 @@ stack = [] #stack 초기화
 n = int(sys.stdin.readline()) #(\n)이 같이 저장되기 때문에 형변환 필요
 
 for i in range(n):
-    cm = list(map(int, sys.stdin.readline().split()))
+    cm = sys.stdin.readline().split()
 
-    #1. 정수 x를 stack에 넣는다
-    if cm[0] == 1:
+    #1. push X: 정수 X를 스택에 넣는 연산이다.
+    if cm[0] == "push":
         stack.append(cm[1])
 
-    #2. 스택에 정수가 있다면 맨 위의 정수를 빼고 출력한다. 없다면 -1을 대신 출력한다
-    elif cm[0] == 2:
+    #2. pop: 스택에서 가장 위에 있는 정수를 빼고, 그 수를 출력한다. 
+    # 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+    elif cm[0] == "pop":
         print(stack.pop() if stack else -1)
     
-    #3. 스택에 들어있는 정수의 개수를 출력한다
-    elif cm[0] == 3:
+    #3. size: 스택에 들어있는 정수의 개수를 출력한다.
+    elif cm[0] == "size":
         print(len(stack))
     
-    #4. 스택이 비어있으면 1, 아니면 0을 출력한다.
-    elif cm[0] == 4:
-        print(1 if not stack else 0)
+    #4. empty: 스택이 비어있으면 1, 아니면 0을 출력한다.
+    elif cm[0] == "empty":
+        print(1 if not stack else 0) #if not List는 List가 비어있는지 확인하는 문법
     
-    #5. 스택에 정수가 있다면 맨 위의 정수를 출력한다. 없다면 -1을 대신 출력한다.
-    elif cm[0] == 5:
+    #5. top: 스택의 가장 위에 있는 정수를 출력한다. 
+    # 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+    elif cm[0] == "top":
         print(stack[-1] if stack else -1)
